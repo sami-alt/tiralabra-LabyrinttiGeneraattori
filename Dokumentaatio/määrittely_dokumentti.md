@@ -35,7 +35,7 @@ Algoritmia käytetään Delaunay-triangulaation muodostamiseen. Algoritmi lisä�
 
 Algoritmia käytetään virittävän minimipuun muodostamiseen. Graafin kaaret järjestetään painojensa mukaiseen järjestykseen, minkä jälkeen minimipuu muodostetaan valitsemalla kaaria, jotka eivät aiheuta sykliä.
 
-## Union-Find
+### Union-Find
 
 Kruskalin algoritmin yhteydessä toteutetaan Union-Find-tietorakenne, jonka avulla voidaan tehokkaasti tarkistaa, kuuluvatko kaksi solmua jo samaan komponenttiin.
 
