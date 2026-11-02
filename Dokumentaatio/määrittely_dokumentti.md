@@ -56,8 +56,11 @@ Delaunay-triangulaation tallentamisen tilavaativuus on O(n) kaksiulotteisessa ta
 Algoritmien suunnittelussa ja toteutuksessa käytetään alustavasti seuraavia lähteitä:
 
 Bowyer–Watson algorithm – [Wikipedia](https://en.wikipedia.org/wiki/Bowyer%E2%80%93Watson_algorithm)
+
 Delaunay triangulation – [Wikipedia](https://en.wikipedia.org/wiki/Delaunay_triangulation)
+
 Kruskal's algorithm – [Wikipedia](https://en.wikipedia.org/wiki/Kruskal%27s_algorithm)
+
 Disjoint-set data structure – [Wikipedia](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)
 
 Lisäksi toteutuksen aikana voidaan hyödyntää muita algoritmien toimintaa ja aikavaativuuksia käsitteleviä lähteitä.
