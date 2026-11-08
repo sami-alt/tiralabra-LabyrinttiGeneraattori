@@ -2,7 +2,7 @@
 #include "triangle.h"
 #include "point.h"
 
-Triangle createTriangle( int p1, int p2, int p3) {
+Triangle create_triangle( int p1, int p2, int p3) {
     Triangle t;
     t.p1 = p1;
     t.p2 = p2;
@@ -10,7 +10,7 @@ Triangle createTriangle( int p1, int p2, int p3) {
     return t;
 }
 
-double triangleArea(Triangle t, Point *points) {
+double get_triangle_area(Triangle t, Point *points) {
     Point p1 = points[t.p1];
     Point p2 = points[t.p2];
     Point p3 = points[t.p3];
@@ -21,7 +21,11 @@ double triangleArea(Triangle t, Point *points) {
     return fabs(area) / 2.0;
 }
 
-Orientation getTriangleOrientation(Triangle t, const Point *points) {
+/*
+    Tarkistaa mihin suuntaan kolmion on luotu pisteiden kiertosuuntaan nähden.
+*/
+
+Orientation get_triangle_orientation(Triangle t, const Point *points) {
     Point p1 = points[t.p1];
     Point p2 = points[t.p2];
     Point p3 = points[t.p3];
@@ -33,7 +37,7 @@ Orientation getTriangleOrientation(Triangle t, const Point *points) {
     return (determinant > 0) ? CLOCKWISE : COUNTERCLOCKWISE;
 }
 
-int pointInCircumcircle(Triangle t, const Point *points, Point p) {
+int point_in_circumcicle(Triangle t, const Point *points, Point p) {
     Point p1 = points[t.p1];
     Point p2 = points[t.p2];
     Point p3 = points[t.p3];
@@ -46,10 +50,10 @@ int pointInCircumcircle(Triangle t, const Point *points, Point p) {
     double cy = p3.y - p.y;
 
     double determinant = (ax * ax + ay * ay) * (bx * cy - cx * by) -
-                 (bx * bx + by * by) * (ax * cy - cx * ay) +
-                 (cx * cx + cy * cy) * (ax * by - bx * ay);
+                         (bx * bx + by * by) * (ax * cy - cx * ay) +
+                         (cx * cx + cy * cy) * (ax * by - bx * ay);
 
-    Orientation orientation = getTriangleOrientation(t, points);
+    Orientation orientation = get_triangle_orientation(t, points);
 
     if(orientation == COLLINEAR) {
         return 0;
@@ -59,4 +63,22 @@ int pointInCircumcircle(Triangle t, const Point *points, Point p) {
     }
 
     return determinant < 0;
+}
+
+int point_in_triangle(Point p, Triangle t, Point *points) {
+    Point p1 = points[t.p1];
+    Point p2 = points[t.p2];
+    Point p3 = points[t.p3];
+
+    double d1 = (p.x - p2.x)  * (p1.y - p2.y) 
+              - (p1.x - p2.x) * (p.y - p2.y);
+    double d2 = (p.x - p3.x)  * (p2.y - p3.y) 
+              - (p2.x - p3.x) * (p.y - p3.y);
+    double d3 = (p.x - p1.x)  * (p3.y - p1.y) 
+              - (p3.x - p1.x) * (p.y - p1.y);
+
+    int has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
+    int has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
+
+    return !(has_neg && has_pos);
 }

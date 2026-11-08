@@ -6,6 +6,6 @@ typedef struct Point {
     double y;
 } Point;
 
-Point createPoint(double x, double y);
-int pointEquals(Point p1, Point p2);
+Point create_point(double x, double y);
+int point_equals(Point p1, Point p2);
 #endif // POINT_H   

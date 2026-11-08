@@ -8,7 +8,7 @@ typedef struct Edge {
     int p2;
 } Edge;
 
-Edge createEdge(int p1, int p2);
-int EdgeEquals(Edge e1, Edge e2);
+Edge create_edge(int p1, int p2);
+int edge_equals(Edge e1, Edge e2);
 
 #endif // EDGE_H

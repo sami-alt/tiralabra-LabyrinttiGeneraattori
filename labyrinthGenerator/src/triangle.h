@@ -16,9 +16,10 @@ typedef enum {
 } Orientation;
 
 
-int pointInCircumcircle(Triangle t, const Point *points, Point p);
-Orientation getTriangleOrientation(Triangle t, const Point *points);
-Triangle createTriangle(int p1, int p2, int p3);
-double triangleArea(Triangle t, Point *points);
+int point_in_circumcicle(Triangle t, const Point *points, Point p);
+Orientation get_triangle_orientation(Triangle t, const Point *points);
+Triangle create_triangle(int p1, int p2, int p3);
+double get_triangle_area(Triangle t, Point *points);
+int point_in_triangle(Point p, Triangle t, Point *points);
 
 #endif // TRIANGLE_H
