@@ -56,3 +56,7 @@ dkms.conf
 
 # Notes files
 plan.txt
+projektin_sisalto.txt
+
+# Test coverage output
+labyrinthGenerator/coverage_tests/

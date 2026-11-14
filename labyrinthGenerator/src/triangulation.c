@@ -164,7 +164,7 @@ int bowyer_watson(Triangulation *triangulation){
     //printf("Create super triangle\n");
     if (!triangulation_create_super_triangle(triangulation)) {
     
-        return 0; // Failed to create super triangle
+        return 0; 
     }
     //printf("Super triangle created\n");
 
@@ -191,7 +191,7 @@ int bowyer_watson(Triangulation *triangulation){
             i++;
         }
     }
-    triangulation->num_points = original_point_count; // Reset the number of points to the original count
+    triangulation->num_points = original_point_count; 
     return 1;
 }
 

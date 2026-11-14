@@ -142,6 +142,47 @@ void test_triangulation_create_super_triangle_not_enough_points(void){
     triangulation_free(&triangulation);
 }
 
+void test_super_triangle_same_points(void){
+    Triangulation triangulation;
+    triangulation_init(&triangulation);
+
+    triangulation_add_point(&triangulation, create_point(1.0, 1.0));
+    triangulation_add_point(&triangulation, create_point(1.0, 1.0));
+    triangulation_add_point(&triangulation, create_point(1.0, 1.0));
+
+    TEST_ASSERT_EQUAL_INT(0, triangulation_create_super_triangle(&triangulation));
+
+    TEST_ASSERT_EQUAL_INT(3, triangulation.num_points);
+    TEST_ASSERT_EQUAL_INT(0, triangulation.num_triangles);
+    triangulation_free(&triangulation);
+
+}
+
+
+void test_remove_triangle_negative_index(void){
+    Triangulation triangulation;
+    triangulation_init(&triangulation);
+
+    triangulation_add_triangle(&triangulation, create_triangle(0, 1, 2));
+
+    triangulation_remove_triangle(&triangulation, -1); // Invalid index
+    TEST_ASSERT_EQUAL_INT(1, triangulation.num_triangles);
+
+    triangulation_free(&triangulation);
+}
+
+void test_remove_triangle_out_of_bounds_index(void){
+    Triangulation triangulation;
+    triangulation_init(&triangulation);
+
+    triangulation_add_triangle(&triangulation, create_triangle(0, 1, 2));
+
+    triangulation_remove_triangle(&triangulation, 1); // Invalid index
+    TEST_ASSERT_EQUAL_INT(1, triangulation.num_triangles);
+
+    triangulation_free(&triangulation);
+}
+
 void test_triangulation_free(void){
     Triangulation triangulation;
     triangulation_init(&triangulation);
@@ -543,4 +584,20 @@ void test_bowyer_watson_eight_points(void){
     TEST_ASSERT_TRUE(triangulation_satisfies_delaynay(&triangulation));
     triangulation_free(&triangulation);
 
+}
+
+void test_bowyer_watson_same_points(void){
+    Triangulation triangulation;
+    triangulation_init(&triangulation);
+
+    triangulation_add_point(&triangulation, create_point(1.0, 1.0));
+    triangulation_add_point(&triangulation, create_point(1.0, 1.0));
+    triangulation_add_point(&triangulation, create_point(1.0, 1.0));
+
+    TEST_ASSERT_EQUAL_INT(0, bowyer_watson(&triangulation));
+
+    TEST_ASSERT_EQUAL_INT(3, triangulation.num_points);
+    TEST_ASSERT_EQUAL_INT(0, triangulation.num_triangles);
+
+    triangulation_free(&triangulation);
 }

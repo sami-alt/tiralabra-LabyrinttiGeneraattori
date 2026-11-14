@@ -59,6 +59,50 @@ void test_bowyer_watson_points_on_same_circle(void);
 void test_bowyer_watson_six_points(void);
 void test_bowyer_watson_eight_points(void);
 
+void test_super_triangle_same_points(void);
+void test_remove_triangle_negative_index(void);
+void test_bowyer_watson_same_points(void);
+
+void test_graph_init(void);
+void test_graph_add_edge(void);
+void test_graph_add_multiple_edges(void);
+void test_calculate_edge_weight(void);
+void test_one_triangle_graph(void);
+void test_two_triangles_five_edges_graph(void);
+void test_no_edges_graph(void);
+void test_graph_from_null_triangulation(void);
+void test_free_graph(void);
+
+void test_union_find_init(void);
+void test_union_find_init_null_returns_error(void);
+void test_union_find_init_negative_size_returns_error(void);
+void test_union_find_self(void);
+void test_union_find_invalid_element(void);
+void test_uf_find_after_union(void);
+void test_uf_find_path_compression(void);
+void test_uf_union_two_singletons(void);
+void test_uf_union_same_set(void);
+void test_uf_union_invalid_elements(void);
+void test_uf_connected_after_chain_unions(void);
+void test_uf_two_components(void);
+void test_uf_free(void);
+
+void test_kruskal_empty_graph(void);
+void test_kruskal_single_edge(void);
+void test_kruskal_triangle_drops_heaviest_edge(void);
+void test_kruskal_disconnected_fails(void);
+void test_kruskal_input_graph_not_mutated(void);
+void test_kruskal_skips_out_of_bounds_vertices(void);   
+
+
+void test_kruskal_self_loop(void);
+void test_kruskal_null_arguments(void);
+void test_kruskal_no_edges(void);
+void test_kruskal_zero_weight(void);
+void test_kruskal_negative_weight(void);
+void test_kruskal_equal_weight(void);
+
+
 int main(void) {
     UNITY_BEGIN();
 
@@ -127,6 +171,46 @@ int main(void) {
     RUN_TEST(test_bowyer_watson_points_on_same_circle);
     RUN_TEST(test_bowyer_watson_six_points);
     RUN_TEST(test_bowyer_watson_eight_points);
+
+    //Unit tests for graph.c
+    RUN_TEST(test_graph_init);
+    RUN_TEST(test_graph_add_edge);
+    RUN_TEST(test_graph_add_multiple_edges);
+    RUN_TEST(test_calculate_edge_weight);
+    RUN_TEST(test_one_triangle_graph);
+    RUN_TEST(test_two_triangles_five_edges_graph);
+    RUN_TEST(test_no_edges_graph);
+    RUN_TEST(test_graph_from_null_triangulation);
+    RUN_TEST(test_free_graph);
+
+    //Unit tests for union_find.c
+    RUN_TEST(test_union_find_init);
+    RUN_TEST(test_union_find_init_null_returns_error);
+    RUN_TEST(test_union_find_init_negative_size_returns_error);
+    RUN_TEST(test_union_find_self);
+    RUN_TEST(test_union_find_invalid_element);
+    RUN_TEST(test_uf_find_after_union);
+    RUN_TEST(test_uf_find_path_compression);
+    RUN_TEST(test_uf_union_two_singletons);
+    RUN_TEST(test_uf_union_same_set);
+    RUN_TEST(test_uf_union_invalid_elements);
+    RUN_TEST(test_uf_connected_after_chain_unions);
+    RUN_TEST(test_uf_two_components);
+    RUN_TEST(test_uf_free);
+
+    //Unit tests for kruskal.c
+    RUN_TEST(test_kruskal_empty_graph);
+    RUN_TEST(test_kruskal_single_edge);
+    RUN_TEST(test_kruskal_triangle_drops_heaviest_edge);
+    RUN_TEST(test_kruskal_disconnected_fails);
+    RUN_TEST(test_kruskal_input_graph_not_mutated);
+    RUN_TEST(test_kruskal_skips_out_of_bounds_vertices);    
+    RUN_TEST(test_kruskal_self_loop);
+    RUN_TEST(test_kruskal_null_arguments);
+    RUN_TEST(test_kruskal_no_edges);
+    RUN_TEST(test_kruskal_zero_weight);
+    RUN_TEST(test_kruskal_negative_weight);
+    RUN_TEST(test_kruskal_equal_weight);
 
     return UNITY_END();
 }
