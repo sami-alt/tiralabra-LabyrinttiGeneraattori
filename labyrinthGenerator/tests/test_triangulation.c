@@ -564,6 +564,12 @@ void test_bowyer_watson_eight_points(void){
 
     for (int i = 0; i < triangulation.num_triangles; i++){
         Triangle triangle = triangulation.triangles[i];
+        if (triangle.p1 < 0 || triangle.p1 >= 8 ||
+            triangle.p2 < 0 || triangle.p2 >= 8 ||
+            triangle.p3 < 0 || triangle.p3 >= 8) {
+            TEST_FAIL_MESSAGE("Triangle contains an out-of-bounds point index");
+            continue;
+        }
         TEST_ASSERT_TRUE(triangle.p1 < 8);
         TEST_ASSERT_TRUE(triangle.p2 < 8);
         TEST_ASSERT_TRUE(triangle.p3 < 8);

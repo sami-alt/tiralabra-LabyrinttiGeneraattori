@@ -10,7 +10,7 @@ Triangle create_triangle( int p1, int p2, int p3) {
     return t;
 }
 
-double get_triangle_area(Triangle t, Point *points) {
+double get_triangle_area(Triangle t, const Point *points) {
     Point p1 = points[t.p1];
     Point p2 = points[t.p2];
     Point p3 = points[t.p3];
@@ -65,7 +65,7 @@ int point_in_circumcicle(Triangle t, const Point *points, Point p) {
     return determinant < 0;
 }
 
-int point_in_triangle(Point p, Triangle t, Point *points) {
+int point_in_triangle(Point p, Triangle t, const Point *points) {
     Point p1 = points[t.p1];
     Point p2 = points[t.p2];
     Point p3 = points[t.p3];

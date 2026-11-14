@@ -38,7 +38,7 @@ int kruskal_minimum_spanning_tree(const Graph *graph, int num_vertices, Graph *m
     if (graph->num_edges < 0)
     return -1;
 
-    if (graph->num_edges > 0 && graph->edges == NULL)
+    if (graph->edges == NULL)
     return -1;
     
     int num_edges_copy = graph->num_edges;

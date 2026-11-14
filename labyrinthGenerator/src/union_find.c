@@ -8,9 +8,6 @@ int union_find_init(UnionFind *uf, int size){
     uf->rank = NULL;
     uf->size = 0;
 
-    if (size < 0)
-        return -1;
-
     uf->parent = (int*)malloc(size * sizeof(int));
     uf->rank = (int*)malloc(size * sizeof(int));
     if (!uf->parent || !uf->rank){

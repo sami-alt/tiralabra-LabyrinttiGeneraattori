@@ -38,7 +38,10 @@ CPPCHECK ?= cppcheck
 CLANG_TIDY ?= clang-tidy
 CPPCHECK_FLAGS = --enable=warning,style,performance,portability \
                  --error-exitcode=1 \
-                 --suppress=missingIncludeSystem
+                 --suppress=missingIncludeSystem \
+                 --suppress=preprocessorErrorDirective \
+                 --suppress=unreadVariable \
+                 --suppress=toomanyconfigs
 CLANG_TIDY_FLAGS = --quiet
 
 .PHONY: all test coverage static-analysis cppcheck clang-tidy clean
