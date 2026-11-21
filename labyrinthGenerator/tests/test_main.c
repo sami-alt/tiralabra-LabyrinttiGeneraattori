@@ -102,6 +102,35 @@ void test_kruskal_zero_weight(void);
 void test_kruskal_negative_weight(void);
 void test_kruskal_equal_weight(void);
 
+void test_place_rooms_null_output_pointer(void);
+void test_place_rooms_invalid_arguments(void);
+void test_plance_rooms_impossible_minimum_distance(void);
+void test_place_too_many_rooms(void);
+void test_place_single_room(void);
+void test_place_rooms_all_in_bounds(void);
+void test_place_rooms_with_deterministic_for_same_seed(void);
+void test_place_rooms_with_different_seeds(void);
+void test_place_rooms_with_minimum_distance_allows_any_position(void);
+
+void test_render_null_arguments(void);
+void test_render_single_room_no_edges(void);
+void test_render_room_out_of_bouds(void);
+void test_render_two_rooms_horizontal_corridor(void);
+void test_render_two_rooms_vertical_corridor(void);
+void test_render_two_rooms_diagonal_l_corridor(void);
+void test_render_three_rooms_connected(void);
+void test_render_rejects_edge_with_out_of_range_room_index(void);   
+void test_free_render_grid_null_safe(void);
+
+void test_pipeline_produces_grid_of_requested_size(void);
+void test_pipeline_all_rooms_reachable(void);
+void test_pipeline_deterministic_for_same_seed(void);
+void test_pipeline_different_seeds_produce_different_grids(void);
+void test_pipeline_rejects_null_options(void);
+void test_pipeline_rejects_too_few_rooms(void);
+void test_pipeline_rejects_impossible_minimum_distance(void);
+void test_pipeline_rejects_negative_dimesions(void);
+void test_pipeline_minimal_viable_input(void);
 
 int main(void) {
     UNITY_BEGIN();
@@ -211,6 +240,39 @@ int main(void) {
     RUN_TEST(test_kruskal_zero_weight);
     RUN_TEST(test_kruskal_negative_weight);
     RUN_TEST(test_kruskal_equal_weight);
+
+    //Unit tests for rooms.c
+    RUN_TEST(test_place_rooms_null_output_pointer);
+    RUN_TEST(test_place_rooms_invalid_arguments);
+    RUN_TEST(test_plance_rooms_impossible_minimum_distance);
+    RUN_TEST(test_place_too_many_rooms);
+    RUN_TEST(test_place_single_room);
+    RUN_TEST(test_place_rooms_all_in_bounds);
+    RUN_TEST(test_place_rooms_with_deterministic_for_same_seed);
+    RUN_TEST(test_place_rooms_with_different_seeds);
+    RUN_TEST(test_place_rooms_with_minimum_distance_allows_any_position);
+
+    //Unit tests for render.c
+    RUN_TEST(test_render_null_arguments);
+    RUN_TEST(test_render_single_room_no_edges);
+    RUN_TEST(test_render_room_out_of_bouds);
+    RUN_TEST(test_render_two_rooms_horizontal_corridor);
+    RUN_TEST(test_render_two_rooms_vertical_corridor);
+    RUN_TEST(test_render_two_rooms_diagonal_l_corridor);
+    RUN_TEST(test_render_three_rooms_connected);
+    RUN_TEST(test_render_rejects_edge_with_out_of_range_room_index);
+    RUN_TEST(test_free_render_grid_null_safe);
+
+    //Integration tests for the labyrinth generation pipeline
+    RUN_TEST(test_pipeline_produces_grid_of_requested_size);
+    RUN_TEST(test_pipeline_all_rooms_reachable);
+    RUN_TEST(test_pipeline_deterministic_for_same_seed);
+    RUN_TEST(test_pipeline_different_seeds_produce_different_grids);
+    RUN_TEST(test_pipeline_rejects_null_options);
+    RUN_TEST(test_pipeline_rejects_too_few_rooms);
+    RUN_TEST(test_pipeline_rejects_impossible_minimum_distance);
+    RUN_TEST(test_pipeline_rejects_negative_dimesions);
+    RUN_TEST(test_pipeline_minimal_viable_input);
 
     return UNITY_END();
 }

@@ -1,9 +1,27 @@
-# tiralabra-LabyrinttiGeneraattori
-Tiralabra harjoitustyö - aiheena labyrintin luominen Bowyer-Watson algoritmin avulla.
+# LabyrinttiGeneraattori
 
-## Käyttö
+Satunnaisesti generoitava labyrintti, joka muodostetaan graafialgoritmeilla:
+Delaunay-triangulaatio (Bowyer–Watson) → virittävä minimipuu (Kruskal) →
+ASCII-renderöinti.
 
-Kokonaista ajettavaa ohejelmaa ei vielä ole mutta kokonaisuuksia voidaan testata siirtymällä labyrinthGenerator kansioon.
-Täällä voidaan ajaa komennot make test sekä make coverage joka näyttää testit sekä niiden onnistumis statuksen ja niiden kattavuuden.
+## Vaatimukset
 
-Jonkinlainen visualisointin on myös myöhemmin tulossa kun Bowyer-watson saadaan integroitua apufunktioihin.
+- C-kääntäjä (gcc tai clang), C11-standardin tuki
+- `make`
+- Unity-testikirjasto hakemistossa `../Unity` (testejä varten)
+
+## Kääntäminen
+
+```bash
+cd labyrinthGenerator
+make            # kääntää ohjelman ja testit
+make labyrinth  # kääntää vain ohjelman
+make test       # kääntää ja ajaa testit
+make clean      # poistaa käännöstuotokset
+
+```
+## Ohjelman ajaminen
+
+```bash
+./labyrinth [huoneita] [leveys] [korkeus] [vähimmäisetäisyys] [siemen]
+```

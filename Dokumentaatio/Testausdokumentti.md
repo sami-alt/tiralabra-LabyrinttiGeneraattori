@@ -20,3 +20,12 @@ Bowyer–Watson-algoritmi, joka muodostaa ohjelman geometrisen ytimen, on kattav
 Varsinaisia integraatiotestejä ei ole vielä toteutettu, sillä kaikkia ohjelmiston osia ei ole vielä integroitu toisiinsa. Integraatiotestauksen tarkoituksena on myöhemmin varmistaa, että ohjelmiston eri osat toimivat oikein yhdessä.
 
 Kolmannen viikkoraportin aikaan rivien testikattavuus on 90,79 %. Testaamatta jäänyt koodi liittyy pääasiassa poikkeustilanteiden käsittelyyn, kuten muistinvarauksen epäonnistumiseen. Näiden tilanteiden testaaminen vaatii erillisiä testausjärjestelyjä, eikä niitä ole vielä toteutettu.
+
+### Testien rakenne
+Tällä hetkellä testauksen kattaa noin 100 yksikkö testiä jotka osasittain testaavat myös funktioden toimintaa keskenään
+Suunnitteilla on useita pipeline integraatio testejä jotka testaavat generaattorin sisäisen yhetenäisyyden sujuvuutta ja virheettömyyttä
+Tämän jälkeen muutama end-to-end testejä jotka testaavat koko ohjelmiston toimintoa
+
+rakennen olis projektin lopussa seuraava
+
+| yksikkö testit n 100 kpl | --> | pipeline testit n 15 kpl | --> | end-to-end testtit 1-2 |

@@ -55,6 +55,7 @@ dkms.conf
 *.dwo
 
 # Notes files
+*.txt
 plan.txt
 projektin_sisalto.txt
 

@@ -13,7 +13,10 @@ SRC = src/point.c \
       src/triangulation.c \
       src/graph.c \
       src/union_find.c \
-      src/kruskal.c
+      src/kruskal.c  \
+      src/rooms.c \
+      src/render.c \
+      src/generator.c
 
 TEST_SRC = tests/test_main.c \
            tests/test_point.c \
@@ -23,7 +26,11 @@ TEST_SRC = tests/test_main.c \
            tests/test_triangulation.c \
            tests/test_graph.c \
            tests/test_union_find.c \
-           tests/test_kruskal.c
+           tests/test_kruskal.c \
+           tests/test_rooms.c \
+           tests/test_render.c \
+           tests/test_generator.c
+
 
 UNITY_SRC = ../Unity/src/unity.c
 
@@ -41,12 +48,20 @@ CPPCHECK_FLAGS = --enable=warning,style,performance,portability \
                  --suppress=missingIncludeSystem \
                  --suppress=preprocessorErrorDirective \
                  --suppress=unreadVariable \
-                 --suppress=toomanyconfigs
+                 --suppress=toomanyconfigs \
+                 --suppress=nullPointerRedundantCheck
 CLANG_TIDY_FLAGS = --quiet
 
-.PHONY: all test coverage static-analysis cppcheck clang-tidy clean
+PROGRAM = labyrinth
+PROGRAM_SRC = src/main.c
+LIB_SRC = $(SRC)
 
-all: test
+.PHONY: all program test coverage static-analysis cppcheck clang-tidy clean
+
+all: program test
+
+$(PROGRAM): $(LIB_SRC) $(PROGRAM_SRC)
+	$(CC) $(CFLAGS) $(INCLUDES) $(LIB_SRC) $(PROGRAM_SRC) $(LDLIBS) -o $(PROGRAM)
 
 $(TEST_BINARY): $(SRC_OBJECTS) $(TEST_OBJECTS) $(UNITY_OBJECT)
 	$(CC) $(CFLAGS) $(COVERAGE_FLAGS) $^ $(LDLIBS) -o $@
@@ -62,6 +77,8 @@ $(OBJECT_DIR)/test_%.o: tests/%.c | $(OBJECT_DIR)
 
 $(UNITY_OBJECT): $(UNITY_SRC) | $(OBJECT_DIR)
 	$(CC) $(CFLAGS) $(COVERAGE_FLAGS) $(INCLUDES) -c $< -o $@
+
+program: $(PROGRAM)
 
 test: $(TEST_BINARY)
 	./$(TEST_BINARY)
@@ -85,5 +102,6 @@ clang-tidy:
 
 clean:
 	rm -f $(TEST_BINARY)
+	rm -f $(PROGRAM)
 	rm -f *.gcda *.gcno *.gcov
 	rm -rf $(COVERAGE_DIR)
